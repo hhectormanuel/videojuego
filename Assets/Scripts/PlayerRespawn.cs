@@ -17,10 +17,10 @@ public Animator animator;
     {
         life= hearts.Length;
 
-        if (PlayerPrefs.GetFloat("checkpointPositionX")!=0)
-        {
-            transform.position=(new Vector2(PlayerPrefs.GetFloat("checkpointPositionX"),PlayerPrefs.GetFloat("checkpointPositionY")));
-        }
+        // if (PlayerPrefs.GetFloat("checkpointPositionX")!=0)
+        // {
+        //     transform.position=(new Vector2(PlayerPrefs.GetFloat("checkpointPositionX"),PlayerPrefs.GetFloat("checkpointPositionY")));
+        // }
     }
     public void ReachedCheckPoint(float x, float y){
         PlayerPrefs.SetFloat("checkpointPositionX",x);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public bool betterJump = false;
 public float fallMultiplier = 0.5f;
 public float lowJumpMultiplier = 1f;
 
+
+    
 
     void Start()
     {
@@ -49,6 +52,9 @@ public float lowJumpMultiplier = 1f;
                 }
             }
             
+        }
+        if (Input.GetKey("r")){
+            restart_game();
         }
 
 
@@ -106,7 +112,14 @@ public float lowJumpMultiplier = 1f;
             }
             
         }
+
+        
     }
+
+    void restart_game(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 
 }
 
