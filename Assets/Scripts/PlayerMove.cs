@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class PlayerMove : MonoBehaviour
 {
+public AudioSource AJump;
 public Animator animator;
 
 public float runSpeed = 2;
@@ -38,6 +40,7 @@ public float lowJumpMultiplier = 1f;
             {
                 canDobleJump = true;
                 rb2D.velocity = new Vector2(rb2D.velocity.x,jumpSpeed);
+                AJump.Play();
             }
             else
             {
@@ -48,6 +51,7 @@ public float lowJumpMultiplier = 1f;
                         animator.SetBool("DobleJump",true);
                         rb2D.velocity = new Vector2(rb2D.velocity.x,dobleJumpSpeed);
                         canDobleJump = false;
+                        AJump.Play();
                     }
                 }
             }

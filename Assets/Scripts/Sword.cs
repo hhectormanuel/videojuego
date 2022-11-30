@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Sword : MonoBehaviour
 {
+    public AudioSource clip;
     private BoxCollider2D collider2D;
     private SpriteRenderer playerSpriteRendered;
 
@@ -13,6 +15,7 @@ public class Sword : MonoBehaviour
     {
         playerSpriteRendered = transform.root.GetComponent<SpriteRenderer>();
         collider2D = GetComponent<BoxCollider2D>();
+        collider2D.enabled=false;
     }
 
 
@@ -21,6 +24,7 @@ public class Sword : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q)|| Input.GetMouseButtonDown(0))
         {
             Attack();
+            clip.Play();
         }
     }
     public void Attack()

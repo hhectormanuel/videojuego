@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class PlayerRespawn : MonoBehaviour
 {
 
 private float checkpointPositionX, checkpointPositionY;
 
+public AudioSource AHurt;
 public GameObject[] hearts;
 private int life;
 public Animator animator;
@@ -30,8 +32,9 @@ public Animator animator;
 if (life<1)
 {
     Destroy(hearts[0].gameObject);
-     animator.Play("Hurt");
-     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+     animator.Play("Death");
+    StartCoroutine("Esperar");
+     
 }
 else if(life <2)
 {
@@ -45,10 +48,16 @@ else if(life <3)
 }
 } 
 
+IEnumerator Esperar() {
+    yield return new WaitForSeconds (1);
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+}
 public void PlayerDamaged()
 {
+    AHurt.Play();
     life --;
     CheckLife(); 
+
      }
 }
 
